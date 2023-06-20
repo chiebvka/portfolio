@@ -1,5 +1,21 @@
+
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
+// import  {FaBarsStaggered}  from "react-icons/fa"
+import Image from 'next/image';
+import Header from './Header';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Sidebar from './Sidebar';
+import Footer from './Footer';
+
+
+
+
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(' ')
+}
+ 
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,9 +29,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  // const router = useRouter();
+
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className}  w-10/12 mx-auto `}>
+        <Header />
+        <div className=" mb-5 ">
+        {/* <div className="mx-auto  items-center justify-between flex  + gap-2 mt-8 "> */}
+          {children}
+        </div>
+        <Footer />
+      </body>
     </html>
   )
 }
