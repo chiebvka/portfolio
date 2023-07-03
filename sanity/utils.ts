@@ -15,20 +15,6 @@ export async function getPets() {
     )
 }
 
-export async function getArticles(): Promise<Article[]> {
-    return client.fetch(
-        groq`*[_type == "article"]{
-            _id,
-            _createdAt,b   
-            name,
-            category,
-            "slug": slug.current,
-            "image": image.asset->url,
-            url,
-            content
-        }`
-    )
-}
 
 
 
@@ -54,8 +40,56 @@ export async function getProjects(): Promise<Project[]> {
             "slug": slug.current,
             "image": image.asset->url,
             url,
+            content
      
         }`
+    )
+}
+
+
+export async function getProject(slug: string): Promise<Project>{
+
+    return client.fetch(
+        groq`*[_type == "project" && slug.current == $slug] [0]  {
+            _id,
+            _createdAt,
+            name,
+            description,
+            client,
+            github,
+            livelink, 
+            technology[]-> {
+                name
+            },
+            category[]-> {
+                name
+            },
+            design->{designer, portfolio},
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,  
+            content 
+        }`,
+        { slug }
+    )
+}
+
+
+export async function getArticle(slug: string): Promise<Article>{
+    return client.fetch(
+        groq`*[_type == "article" && slug.current == $slug] [0] {
+            _id,
+            _createdAt,   
+            name,
+            category[]-> {
+                name
+            },
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,
+            content
+        }`,
+        { slug }
     )
 }
 
@@ -77,6 +111,8 @@ export async function getfeaturedPorjects(): Promise<Project[]>{
         },
         category,
         design->{designer, portfolio},
+        "slug": slug.current,
+        "image": image.asset->url,
         category[]-> {   
           name,
           _id
@@ -85,6 +121,27 @@ export async function getfeaturedPorjects(): Promise<Project[]>{
     )
 }
 
+
+export async function getArticles(): Promise<Article[]> {
+    return client.fetch(
+        groq`*[_type == "article"]{
+            _id,
+            _createdAt,   
+            name,
+            category[]-> {
+                name
+            },
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,
+            content[] {
+                _type == "image" => {
+                    asset->
+                }
+            }
+        }`
+    )
+}
 
 
 

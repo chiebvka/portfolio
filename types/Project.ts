@@ -18,5 +18,6 @@ export type Project = {
         portfolio: string
     };
     client: string;
+    image: string;
     content: PortableTextBlock[];
 }

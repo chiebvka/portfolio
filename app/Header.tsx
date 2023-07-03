@@ -50,7 +50,7 @@ export default function Header ()  {
       <div className=" flex  justify-center  mt-3  p-2  ">
         <Link href="/"  className={`${cavet.className} text-4xl text-[#bebebe] font-extrabold`}>Ebvka.</Link>  
       </div>
-      <div className=" flex items-end justify-center bg-gradient-to-t from-white  hover:shine transition-all duration-150 delay-500 ease-in via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+      <div className=" flex items-end justify-center  hover:shine transition-all duration-150 delay-500 ease-in  lg:static lg:h-auto lg:w-auto lg:bg-none">
         {/* <FaBarsStaggered /> */}
         <div className="flex  mt-3">
           <button
@@ -84,24 +84,34 @@ export default function Header ()  {
           <div className="-my-6 md:ml-7 mb-7 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6">
           
-              <a
-                href="#"
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
-                Features
-              </a>
-              <a
-                href="#"
+                Home
+              </Link>
+              <Link
+                href="/works"
+                onClick={() => setMobileMenuOpen(false)}
                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
-                Marketplace
-              </a>
-              <a
-                href="#"
+                Projects
+              </Link>
+              <Link
+                href="/articles"
+                onClick={() => setMobileMenuOpen(false)}
                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
-                Company
-              </a>
+                Articles
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+              >
+                Contact
+              </Link>
             </div>
 
           </div>

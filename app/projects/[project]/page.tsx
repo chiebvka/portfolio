@@ -1,261 +1,98 @@
+import { getProject } from "@/sanity/utils";
+import urlBuilder from '@sanity/image-url';
+// import { urlForImage } from 'lib/sanity.image';
+import { createClient } from 'next-sanity';
+import { PortableText } from "@portabletext/react";
+import {getImageDimensions} from '@sanity/asset-utils';
+import Image from "next/image";
+import Link from "next/link";
+import { AiOutlineLink } from "react-icons/ai";
+import { BiCalendar } from "react-icons/bi";
+import { client } from "@/sanity/lib/client";
+import { RichTextComponents } from "@/app/RichTextComponents";
 
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { MdOutlineWebhook } from "react-icons/md"
-import { AiOutlineGithub } from "react-icons/ai"
-import Sidebar from '@/app/Sidebar';
+type Props = {
+    params: { project: string }
+
+    
+}
 
 
+export default async function Project({ params }: Props) {
+
+    const slug = params.project;
+    const project = await getProject(slug)
+
+    const duedate = new Date(project._createdAt).toISOString().split("T")[0];
 
 
-export default function page ()  {
+    
+
+    console.log(project)
 
 
-
-  const techs = [
-    { number:"01" ,label: 'Home' },
-    { number:"02" ,label: 'About' },
-    { number:"03" ,label: 'Articles'  },
-    { number:"04" ,label: 'Contact' }
-  ];
-
-
-  
-  return (
-    <main className="mx-auto  items-center justify-between flex  lg:grid grid-cols-2 gap-2 mt-8">
-        <div className="hidden lg:flex">
-            <Sidebar  />
-        </div>
-            
-      <div className="  flex-col items-start w-full p-5  h-full">
-        <h2 className='text-[#bebebe] text-base underline  '>FEATURED</h2>
-        <div className="flex flex-col w-full lg:w-11/12  my-3  ">
-          <Link href="/" className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in  w-full px-3 py-4 rounded my-4">
-            <h3>Guild Protocol</h3>
-            <div className="flex  mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
+    return (
+        <main className=" border-l-4  border-l-slate-400 mt-[20px] lg:mt-[70px]">
+            {/* <div className="text-white ">{project.name}</div> */}
+            <div className=" w-full">
+                <div className="flex w-full border-2 rounded -z-10 mx-auto opacity-75 relative h-[20vh]  ">
+                    <Image src={project.image} alt={project.name} className=" -z-10  object-cover"  fill={true} />
+                </div>
+                <div className="border-2 bg-[#515373] -mt-12  z-40  rounded-lg  w-11/12 mx-auto py-2 ">
+                    <div className="flex flex-col lg:flex-row   w-full lg:w-11/12  mx-auto">
+                        <div className="lg:w-6/12  w-full  lg:p-2 ">
+                            <h1 className=" text-base lg:text-2xl pl-2 ">{project.name}</h1>
+                            <span  className='flex mt-1 pl-1 items-center'>
+                                <BiCalendar className='fs-1  ml-1 ' />
+                                <span className='font-light  text-[11px]  md:text-sm'>{duedate}</span>
+                            </span>
+                        </div>
+                        <div className="lg:w-6/12  w-full   lg:p-2  flex flex-col lg:items-center lg:justify-evenly lg:flex-row items-start justify-start">
+                            <Link href={project.livelink} target='_blank' className=' flex items-center  p-1 lg:p-2'>
+                                <span  className='flex underline items-center'>
+                                    <AiOutlineLink className='lg:fs-3 fs-5 mx-1 ' />
+                                    <span className='font-light text-[11px] lg:text-sm '>View the application</span>
+                                </span>
+                            </Link>
+                            <Link href={project.github} target='_blank' className=' flex  items-center  p-1 lg:p-2'>
+                                <span  className='flex underline items-center'>
+                                    <AiOutlineLink className='lg:fs-3 fs-5  mx-1 ' />
+                                    <span className='font-light  text-[11px] lg:text-sm '>Github Repo</span>
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
+                    {/* <span className="border-2 flex  lg:mt-2 mt-1 w-full lg:w-11/12  mx-auto"></span> */}
+                    <div className="flex lg:flex-row flex-col  lg:mt-2 mt-1 w-full lg:w-11/12 mx-auto">
+                        <div className="lg:w-6/12  w-full  lg:p-2  px-2 ">
+                            <div className="flex  lg:flex-col lg:items-start lg:justify-start flex-row items-center justify-self-start">
+                                <div className="flex mr-2 lg:mr-0 ">
+                                    <span className="font-light  text-[11px] lg:text-base pl-1 md:text-sm">Designer: <Link href={project.design.portfolio} target="_blank" className="underline" >{project.design.designer}</Link></span>
+                                </div>
+                                <div className="flex ">
+                                    <span className="font-light  text-[11px] lg:text-base pl-1 md:text-sm">Client: <Link href={project.livelink} target="_blank" className="underline" >{project.client}</Link></span>
+                                </div>
+                            </div>
+                            <div className="flex mt-1 ">
+                                {project.technology.map((technology) => {
+                                return(
+                                    <div className='lg:mr-2 mr-1 lg:pl-1  flex items-center justify-center  ' key={technology._id} > 
+                                    <span className='lg:text-[#bebebe] flex items-center lg:has-before lg:bg-[#1b1b1d] lg:hover:shine lg:hover:mt-5 lg:hover:ml-1 lg:border lg:border-slate-400 transition-all duration-150 delay-250 lg:rounded-lg rounded  ease-in mt-2  p-1 text-[10px] underline lg:mt-3 lg:mr-3 tracking-tighter lg:p-2 lg:text-xs lg:tracking-tight capitalize  '>{technology.name}</span> 
+                                    </div>
+                                )
+                                })}
+                            </div>
+                        </div>
+                        <div className="lg:w-6/12 border-l-3  border-l-slate-400 lg:flex hidden lg:p-2 ">
+                            <p className="text-[11px] lg:text-sm">{project.description}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:my-10  py-2 px-4 border-purple-700 w-full">
+                    <span className="py-2 text-[11px] lg:text-base md:text-sm"><PortableText value={project.content} components={RichTextComponents}  /></span>
+                </div>
             </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide leading-loose '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </span>
-              <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </span>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline'>John Doe</span>  </div>
-          </Link>
-          <Link href="/" className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in  w-full px-3 py-4 rounded my-4">
-            <h3>Guild Protocol</h3>
-            <div className="flex  mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide leading-loose '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </span>
-              <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </span>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline'>John Doe</span>  </div>
-          </Link>
-          <Link href="/" className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in  w-full px-3 py-4 rounded my-4">
-            <h3>Guild Protocol</h3>
-            <div className="flex  mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide leading-loose '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </span>
-              <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </span>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline'>John Doe</span>  </div>
-          </Link>
-          {/* <div className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in  w-full px-3 py-4 rounded my-4">
-            <h3>Guild Protocol</h3>
-            <div className="flex  mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide leading-loose '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </Link>
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </Link>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <Link className='text-white text-xs underline' href="/">John Doe</Link>  </div>
-          </div> */}
-        </div>
-
-
-
-        <h2 className='text-[#bebebe] text-base underline  '>OTHER</h2>
-        <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-5 group w-full my-3">
-          <Link href="/" className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border group-hover:gap-x-2 border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
-            <h3>Guild Protocol</h3>
-            <div className="flex mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide  '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </span>
-              <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </span>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline' >John Doe</span>  </div>
-          </Link>
-          <div className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
-            <h3>Guild Protocol</h3>
-            <div className="flex mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide  '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </Link>
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </Link>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <Link className='text-white text-xs underline' href="/">John Doe</Link>  </div>
-          </div>
-          <div className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
-            <h3>Guild Protocol</h3>
-            <div className="flex mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide  '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </Link>
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </Link>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <Link className='text-white text-xs underline' href="/">John Doe</Link>  </div>
-          </div>
-          <div className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
-            <h3>Guild Protocol</h3>
-            <div className="flex mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide  '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </Link>
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </Link>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <Link className='text-white text-xs underline' href="/">John Doe</Link>  </div>
-          </div>
-          <div className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
-            <h3>Guild Protocol</h3>
-            <div className="flex mt-2 ">
-              {techs.map((tech) => {
-                return(
-                  <div className='mr-2 ' key={tech.number}> 
-                    <span className='text-[#bebebe] text-xs tracking-tight capitalize  '>{tech.label}</span> 
-                  </div>
-                )
-              })}
-            </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide  '>Landing page for Crypto Payment</p>
-            <div className="flex">
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <MdOutlineWebhook  className='fs-3 mr-1' />
-                <p className='font-light text-xs' > Live</p>
-              </Link>
-              <Link href="/" target='_blank' className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-                <AiOutlineGithub className='fs-3 mr-1' />
-                <p className='font-light text-xs' >Repo</p>
-              </Link>
-            </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <Link className='text-white text-xs underline' href="/">John Doe</Link>  </div>
-          </div>
-
-        </div>
-      </div>
-    </main>
-  )
+        </main>
+    )
 }

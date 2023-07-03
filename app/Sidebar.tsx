@@ -14,9 +14,10 @@ export default function Sidebar() {
 
     const links = [
         { path: '/', label: 'Home', number: "00", targetSegment: null },
-        { path: '/works', label: 'Works', number: "01", targetSegment: "works" },
-        { path: '/articles', label: 'Articles', number: "02", targetSegment: "articles" },
-        { path: '/contact', label: 'Contact', number: "03", targetSegment: "contact" }
+        // { path: '/works', label: 'Works', number: "01", targetSegment: "works" },
+        { path: '/articles', label: 'Articles', number: "01", targetSegment: "articles" },
+        { path: '/contact', label: 'Contact', number: "02", targetSegment: "contact" },
+        { path: 'https://www.linkedin.com/in/ebuzor-ebuka-1864a01a1/', label: 'LinkedIn', number: "03", targetSegment: "linkedin" }
       ];
 
 

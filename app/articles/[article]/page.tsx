@@ -1,181 +1,78 @@
-'use client'
-
-import Image from 'next/image';
-import Link from 'next/link';
-import { MdOutlineWebhook } from "react-icons/md"
-import { AiOutlineGithub } from "react-icons/ai"
-import Sidebar from '@/app/Sidebar';
-import { BsClockHistory } from "react-icons/bs"
-
-
-export default function page ()  {
+import { getArticle, getProject } from "@/sanity/utils";
+import { PortableText } from "@portabletext/react";
+import Image from "next/image";
+import Link from "next/link";
+import { AiOutlineLink } from "react-icons/ai";
+import { RichTextComponents } from "@/app/RichTextComponents";
+import { BiCalendar } from "react-icons/bi";
 
 
-  const techs = [
-    { number:"01" ,label: 'Home' },
-    { number:"02" ,label: 'About' },
-    { number:"03" ,label: 'Articles'  },
-    { number:"04" ,label: 'Contact' }
-  ];
+type Props = {
+    params: { article: string }
 
-  
-  return (
+    
+}
 
-    <main className="mx-auto  items-center justify-between flex  lg:grid grid-cols-2 gap-2 mt-8">
-    <div className="hidden lg:flex">
-        <Sidebar  />
-    </div>
-        
-    <div className="  flex-col items-start w-full p-5  h-full">      
-      <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-5 w-full my-3">
-        <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-          <h3>Guild Protocol</h3>
-          <div className="flex text-[#bebebe] text-xs mt-2 ">
-            January 01, 2023
-          </div>
-          <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-          <div className="flex">
-            <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-              <BsClockHistory  className='text-sm mr-1' />
-              <p className='font-light text-xs' > 10 min read</p>
-            </span>
-          </div>
-        </Link>
-        <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-          <h3>Guild Protocol</h3>
-          <div className="flex text-[#bebebe] text-xs mt-2 ">
-            January 01, 2023
-          </div>
-          <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-          <div className="flex">
-            <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-              <BsClockHistory  className='text-sm mr-1' />
-              <p className='font-light text-xs' > 10 min read</p>
-            </span>
-          </div>
-        </Link>
-        <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-          <h3>Guild Protocol</h3>
-          <div className="flex text-[#bebebe] text-xs mt-2 ">
-            January 01, 2023
-          </div>
-          <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-          <div className="flex">
-            <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-              <BsClockHistory  className='text-sm mr-1' />
-              <p className='font-light text-xs' > 10 min read</p>
-            </span>
-          </div>
-        </Link>
-        <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-          <h3>Guild Protocol</h3>
-          <div className="flex text-[#bebebe] text-xs mt-2 ">
-            January 01, 2023
-          </div>
-          <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-          <div className="flex">
-            <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-              <BsClockHistory  className='text-sm mr-1' />
-              <p className='font-light text-xs' > 10 min read</p>
-            </span>
-          </div>
-        </Link>
-        <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-          <h3>Guild Protocol</h3>
-          <div className="flex text-[#bebebe] text-xs mt-2 ">
-            January 01, 2023
-          </div>
-          <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-          <div className="flex">
-            <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-              <BsClockHistory  className='text-sm mr-1' />
-              <p className='font-light text-xs' > 10 min read</p>
-            </span>
-          </div>
-        </Link>
-      </div>
-    </div>
-    </main>
 
-    // <main className="mx-auto  items-center justify-between flex lg:grid grid-cols-2 gap-2 mt-8">
-    // {/* <div className="flex flex-col items-start p-5  h-full"> */}
-    //   <div className="hidden lg:flex">
-    //       <Sidebar  />
-    //   </div>
 
-    //   <div className="flex-col items-start w-full p-5  h-full">
-    //     <h2 className='text-[#bebebe] text-base underline uppercase '>Blog posts</h2>
 
-    //     {/* <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-5 w-full my-3">
-    //       <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-    //         <h3>Guild Protocol</h3>
-    //         <div className="flex text-[#bebebe] text-xs mt-2 ">
-    //           January 01, 2023
-    //         </div>
-    //         <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-    //         <div className="flex">
-    //           <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-    //             <BsClockHistory  className='text-sm mr-1' />
-    //             <p className='font-light text-xs' > 10 min read</p>
-    //           </span>
-    //         </div>
-    //       </Link>
-    //       <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-    //         <h3>Guild Protocol</h3>
-    //         <div className="flex text-[#bebebe] text-xs mt-2 ">
-    //           January 01, 2023
-    //         </div>
-    //         <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-    //         <div className="flex">
-    //           <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-    //             <BsClockHistory  className='text-sm mr-1' />
-    //             <p className='font-light text-xs' > 10 min read</p>
-    //           </span>
-    //         </div>
-    //       </Link>
-    //       <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-    //         <h3>Guild Protocol</h3>
-    //         <div className="flex text-[#bebebe] text-xs mt-2 ">
-    //           January 01, 2023
-    //         </div>
-    //         <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-    //         <div className="flex">
-    //           <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-    //             <BsClockHistory  className='text-sm mr-1' />
-    //             <p className='font-light text-xs' > 10 min read</p>
-    //           </span>
-    //         </div>
-    //       </Link>
-    //       <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-    //         <h3>Guild Protocol</h3>
-    //         <div className="flex text-[#bebebe] text-xs mt-2 ">
-    //           January 01, 2023
-    //         </div>
-    //         <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-    //         <div className="flex">
-    //           <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-    //             <BsClockHistory  className='text-sm mr-1' />
-    //             <p className='font-light text-xs' > 10 min read</p>
-    //           </span>
-    //         </div>
-    //       </Link>
-    //       <Link href="/" className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
-    //         <h3>Guild Protocol</h3>
-    //         <div className="flex text-[#bebebe] text-xs mt-2 ">
-    //           January 01, 2023
-    //         </div>
-    //         <p className='text-[#777778] text-sm tracking-wide mt-2 leading-loose '>Landing page for Crypto Payment</p>
-    //         <div className="flex">
-    //           <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
-    //             <BsClockHistory  className='text-sm mr-1' />
-    //             <p className='font-light text-xs' > 10 min read</p>
-    //           </span>
-    //         </div>
-    //       </Link>
 
-    //     </div> */}
-    //   </div>
 
-    // </main>
-  )
+export default async function Project({ params }: Props) {
+
+    const slug = params.article;
+
+    const article = await getArticle(slug);
+    
+    const duedate = new Date(article._createdAt).toISOString().split("T")[0];
+
+
+
+    return (
+        <main className="border-l-4  border-l-slate-400 mt-[20px] lg:mt-[70px]">
+            {/* <div className="text-white ">{project.name}</div> */}
+            <div className=" w-full">
+                <div className="flex w-full -z-10 mx-auto opacity-75 relative h-[20vh]  ">
+                    <Image src={article.image} alt={article.name} className=" border-2 -z-10 object-cover"  fill={true} />
+                </div>
+                <div className=" bg-[#515373] border-2 border-slate-400 -mt-12 rounded-lg opacity-100 z-40 w-11/12 mx-auto py-2 ">
+                    <div className="flex  w-11/12 mx-auto">
+                        <div className="w-full p-2 ">
+                            <h1 className="text-base lg:text-2xl pl-2 ">{article.name}</h1>
+                            <span  className='flex mt-1 pl-1 items-center'>
+                                <BiCalendar className='fs-1  ml-1 ' />
+                                <span className='font-light  text-[11px]  md:text-sm'>{duedate}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span className="border flex  mt-2 w-11/12 mx-auto"></span>
+                    <div className="flex  mt-1  w-11/12 mx-auto">
+                        <div className="w-full   p-2  ">
+                            <div className="flex ">
+                                {article.category.map((category) => {
+                                return(
+                                    <div className='mr-2 flex items-center justify-center'  key={category._id} > 
+                                    <span className='text-[#bebebe] flex items-center has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-1 border border-slate-400 transition-all duration-150 delay-250 rounded-lg  ease-in mt-3 mr-3  p-2 text-xs tracking-tight capitalize  '>{category.name}</span> 
+                                    </div>
+                                )
+                                })}
+                            </div>
+                            {/* <Link href="/" target='_blank' className=' flex  items-center  p-2'>
+                                <span  className='flex underline items-center'>
+                                    <AiOutlineLink className='fs-3  lg:mx-1 ' />
+                                    <span className='font-light  text-xs lg:text-sm '>Github Repo</span>
+                                </span>
+                            </Link> */}
+                        </div>
+                        {/* <div className="w-6/12 border-2 p-2 border-black">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime error quidem dolores excepturi ab dicta deserunt iste, vel iusto mollitia itaque! Voluptatem, iusto perferendis vel optio, totam repellendus odio eveniet quae inventore ratione, esse quaerat laborum corrupti doloremque tenetur porro.</p>
+                        </div> */}
+                    </div>
+                </div>
+                <div className="lg:my-10 mt-5  py-2 px-4  w-full">
+                    <span className="py-2 text-[11px] lg:text-base md:text-sm"><PortableText value={article.content} components={RichTextComponents}  /></span>
+                </div>
+            </div>
+        </main>
+    )
 }
