@@ -4,7 +4,7 @@
 
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255;
   --background-start-rgb: #bdc3c7;
   --background-end-rgb:  #2c3e50;
   --white_30: hsl(0, 0%, 100%, 0.3);
@@ -41,7 +41,9 @@ body {
   /* color: var(--foreground-rgb); */
   /* background: #2a384c; */
   /* background: #a0b2c2; */
-  background: #151515;
+  /* background: #151515; */
+  /* background: #606887; */
+  background: #2b2b33;
   /* background: #F2EFEB; */
   font-family: studiofeixen-variable,studiofeixen,Arial,Helvetica,sans-serif;
 }

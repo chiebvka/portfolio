@@ -33,9 +33,9 @@ export default async function Project({ params }: Props) {
             {/* <div className="text-white ">{project.name}</div> */}
             <div className=" w-full">
                 <div className="flex w-full -z-10 mx-auto opacity-75 relative h-[20vh]  ">
-                    <Image src={article.image} alt={article.name} className=" border-2 -z-10 object-cover"  fill={true} />
+                    <Image src={article.image} alt={article.name} className=" border-2 border-slate-400 rounded -z-10 object-cover"  fill={true} />
                 </div>
-                <div className=" bg-[#515373] border-2 border-slate-400 -mt-12 rounded-lg opacity-100 z-40 w-11/12 mx-auto py-2 ">
+                <div className=" bg-[#1b1b1d]  border-2 border-slate-400 -mt-12 rounded-lg opacity-100 z-40 w-11/12 mx-auto py-2 ">
                     <div className="flex  w-11/12 mx-auto">
                         <div className="w-full p-2 ">
                             <h1 className="text-base lg:text-2xl pl-2 ">{article.name}</h1>
@@ -45,7 +45,7 @@ export default async function Project({ params }: Props) {
                             </span>
                         </div>
                     </div>
-                    <span className="border flex  mt-2 w-11/12 mx-auto"></span>
+                    <span className="border border-slate-400 flex  mt-2 w-11/12 mx-auto"></span>
                     <div className="flex  mt-1  w-11/12 mx-auto">
                         <div className="w-full   p-2  ">
                             <div className="flex ">

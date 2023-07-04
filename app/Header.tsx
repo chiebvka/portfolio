@@ -46,7 +46,7 @@ export default function Header ()  {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState<BooleanType>(initalState);
   return (
-    <div className="   w-full flex  max-w-5xl items-center  justify-between font-mono text-sm lg:hidden">
+    <div className="   w-full flex  max-w-5xl items-center  justify-between font-mono text-sm ">
       <div className=" flex  justify-center  mt-3  p-2  ">
         <Link href="/"  className={`${cavet.className} text-4xl text-[#bebebe] font-extrabold`}>Ebvka.</Link>  
       </div>
@@ -55,7 +55,7 @@ export default function Header ()  {
         <div className="flex  mt-3">
           <button
             type="button"
-            className=" inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-400 transition-all duration-150 delay-250  ease-in"
+            className=" inline-flex items-center lg:hidden justify-center rounded-md p-2.5 text-gray-700 has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-400 transition-all duration-150 delay-250  ease-in"
             onClick={() => setMobileMenuOpen(true)}
           >
           <span className="sr-only">Open main menu</span>
