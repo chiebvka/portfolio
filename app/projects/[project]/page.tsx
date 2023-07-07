@@ -27,14 +27,8 @@ export default async function Project({ params }: Props) {
     const duedate = new Date(project._createdAt).toISOString().split("T")[0];
 
 
-    
-
-    console.log(project)
-
-
     return (
         <main className=" border-l-4  border-l-slate-400 mt-[20px] lg:mt-[70px]">
-            {/* <div className="text-white ">{project.name}</div> */}
             <div className=" w-full">
                 <div className="flex w-full border-2 border-slate-400 rounded -z-10 mx-auto opacity-75 relative h-[20vh]  ">
                     <Image src={project.image} alt={project.name} className=" -z-10  object-cover"  fill={true} />

@@ -3,7 +3,7 @@ import { FiTag } from 'react-icons/fi';
 import { type SchemaTypeDefinition } from 'sanity';
 const pet = {
   name: 'pet',
-  title: 'Project Scope',
+  title: 'Technology Used',
   type: 'document',
   of: [{type: 'string'}],
   fields: [
