@@ -30,7 +30,7 @@ export default async function Project({ params }: Props) {
     return (
         <main className=" border-l-4  border-l-slate-400 mt-[20px] lg:mt-[70px]">
             <div className=" w-full">
-                <div className="flex w-full border-2 border-slate-400 rounded -z-10 mx-auto opacity-75 relative h-[20vh]  ">
+                <div className="flex w-full border-2 border-slate-400 rounded -z-10 mx-auto opacity-75 relative h-[20vh] md:h-[30vh]  ">
                     <Image src={project.image} alt={project.name} className=" -z-10  object-cover"  fill={true} />
                 </div>
                 <div className="border-2 border-slate-400 bg-[#1b1b1d] -mt-12  z-40  rounded-lg  w-11/12 mx-auto py-2 ">
@@ -62,17 +62,17 @@ export default async function Project({ params }: Props) {
                         <div className="lg:w-6/12  w-full  lg:p-2  px-2 ">
                             <div className="flex  lg:flex-col lg:items-start lg:justify-start flex-row items-center justify-self-start">
                                 <div className="flex mr-2 lg:mr-0 ">
-                                    <span className="font-light  text-[10px] lg:text-base  lg:pl-0 md:text-sm">Designer: <Link href={project.design.portfolio} target="_blank" className="underline text-[9px] lg:text-sm transition duration-300 hover:text-slate-400 " >{project.design.designer}</Link></span>
+                                    <span className="font-light  text-[10px] lg:text-base  pl-0 md:text-sm">Designer: <Link href={project.design.portfolio} target="_blank" className="underline text-[9px] lg:text-sm transition duration-300 hover:text-slate-400 " >{project.design.designer}</Link></span>
                                 </div>
                                 <div className="flex ">
-                                    <span className="font-light  text-[10px] mt-1 lg:text-base  lg:pl-0 md:text-sm">Client: <Link href={project.livelink} target="_blank" className="underline text-[9px] lg:text-sm transition duration-300 hover:text-slate-400 " >{project.client}</Link></span>
+                                    <span className="font-light  text-[10px] mt-1 lg:text-base pl-0 md:text-sm">Client: <Link href={project.livelink} target="_blank" className="underline text-[9px] lg:text-sm transition duration-300 hover:text-slate-400 " >{project.client}</Link></span>
                                 </div>
                             </div>
                             <div className="flex mt-1 ">
                                 {project.technology.map((technology) => {
                                 return(
                                     <div className='lg:mr-2 mr-1   flex items-center justify-center  ' key={technology._id} > 
-                                    <span className='lg:text-[#bebebe] flex items-center transition-all duration-150 delay-250 lg:rounded-lg rounded  ease-in mt-2  p-1 text-[10px] underline  tracking-tighter  lg:text-xs  capitalize  '>{technology.name}</span> 
+                                    <span className='lg:text-[#bebebe] flex items-center transition-all duration-150 delay-250 lg:rounded-lg rounded  ease-in mt-2  pr-1 text-[10px] underline  tracking-tighter  lg:text-xs  capitalize  '>{technology.name}</span> 
                                     </div>
                                 )
                                 })}

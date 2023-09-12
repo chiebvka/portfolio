@@ -4,11 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MdOutlineWebhook } from "react-icons/md"
 import { AiOutlineGithub } from "react-icons/ai"
-import Sidebar from '@/app/Sidebar';
+
 import { BsClockHistory } from "react-icons/bs";
 import { getArticles } from '@/sanity/utils';
 import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '../RichTextComponents';
+import SideBar from '../SideBar';
 
 
 
@@ -22,23 +23,12 @@ const articles = await getArticles();
 
 
 export default function page ()  {
-
-
-  // const techs = [
-  //   { number:"01" ,label: 'Home' },
-  //   { number:"02" ,label: 'About' },
-  //   { number:"03" ,label: 'Articles'  },
-  //   { number:"04" ,label: 'Contact' }
-  // ];
-
-  
   return (
-
-    <main className="mx-auto min-h-screen items-center justify-between flex  lg:grid grid-cols-2 gap-2 mt-8">
-      <div className="hidden  lg:sticky lg:flex">
-          <Sidebar  />
-      </div> 
-      <div className="  flex-col items-start w-full p-5  h-full">   
+    <main className="mx-auto min-h-screen justify-between flex mt-8 ">
+      <div className="flex relative mt-2 w-1/2 mx-auto">
+        <SideBar />
+      </div>
+      <div className="  flex-col lg:w-1/2 mx-auto items-start w-full p-5  h-full">   
       <h2 className='text-[#bebebe] text-base underline md:hidden  '>Articles</h2>   
         <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-5 w-full my-3">
           {articles.map((article) => (

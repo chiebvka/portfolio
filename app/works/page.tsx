@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MdOutlineWebhook } from "react-icons/md"
 import { AiOutlineGithub } from "react-icons/ai"
-import Sidebar from '../Sidebar';
 import { getProjects, getfeaturedPorjects } from '@/sanity/utils';
+import SideBar from '../SideBar';
 
 
 
@@ -34,7 +34,7 @@ export default function page ()  {
   return (
     <main className="mx-auto  items-center justify-between flex  lg:grid grid-cols-2 gap-2 mt-8">
         <div className="hidden lg:sticky lg:flex">
-            <Sidebar  />
+            <SideBar  />
         </div>
             
       <div className="  flex-col items-start w-full p-5  h-full">

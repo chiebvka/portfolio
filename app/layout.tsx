@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Header from './Header';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Sidebar from './Sidebar';
+import Sidebar from './SideBar';
 import Footer from './Footer';
 
 
@@ -35,10 +35,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className}  w-10/12 mx-auto `}>
+      <body className={`${inter.className} w-10/12 lg:w-9/12 mx-auto `}>
         <Header />
         <div className=" mb-5 ">
-        {/* <div className="mx-auto  items-center justify-between flex  + gap-2 mt-8 "> */}
           {children}
         </div>
         <Footer />

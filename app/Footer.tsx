@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import profile from "../public/full.jpg";
+import displayp from "../public/3.png";
 import { AiFillGithub, AiOutlineLink, AiOutlineTwitter, AiOutlineMail }  from "react-icons/ai";
 
 
@@ -9,9 +10,9 @@ export default function Footer() {
             <div className="  flex flex-col   w-full  lg:w-10/12 mx-auto pb-7 justify-center ">
                 <div className="flex items-center justify-center ">
                     <div className='w-2/12   flex items-center justify-center py-3'>
-                        <Image src={profile} className=' w-[40px]  h-[40px] lg:w-[65px] -mb-6 lg:-mb-4 lg:h-[65px] rounded-full object-cover flex bg-white  border-2' alt="Profile Portrait " />
+                        <Image src={displayp} className=' w-[40px]  h-[40px] lg:w-[65px] -mb-6 lg:-mb-4 lg:h-[65px] rounded-full object-cover flex bg-[#1b1b1d]  border' alt="Profile Portrait " />
                     </div>
-                    <Link href="https://github.com/whoisebvka" target='_blank' className=' flex items-center  has-before bg-[#1b1b1d] hover:shine hover:mt-9 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250 rounded-lg  ease-in mt-7 mr-3 p-2'>
+                    <Link href="https://github.com/chiebvka" target='_blank' className=' flex items-center  has-before bg-[#1b1b1d] hover:shine hover:mt-9 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250 rounded-lg  ease-in mt-7 mr-3 p-2'>
                         <span  className='flex items-center'>
                         <AiFillGithub className='fs-3 lg:mx-1 mr-1' />
                         <span className='font-light text-xs lg:text-sm '>Github</span>
@@ -25,7 +26,7 @@ export default function Footer() {
                         <AiOutlineLink className='fs-3 lg:mx-1 hidden lg:flex' />
                         </span>
                     </Link>
-                    <Link href="mailto:ebuka@bexoni.com" target='_blank' className=' flex items-center has-before bg-[#1b1b1d] hover:shine hover:mt-9 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250 rounded-lg  ease-in mt-7 mr-3  p-2'>
+                    <Link href="mailto:ebuka@chiebvka.dev" target='_blank' className=' flex items-center has-before bg-[#1b1b1d] hover:shine hover:mt-9 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250 rounded-lg  ease-in mt-7 mr-3  p-2'>
                         <span  className='flex items-center'>
                             <AiOutlineMail className='fs-3 lg:mx-1 mr-2' />
                             <span className='font-light text-xs lg:text-sm '>Email</span>

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import profile from "../public/full.jpg";
 import { AiFillGithub, AiOutlineLink, AiOutlineTwitter, AiOutlineMail }  from "react-icons/ai"
 
-export default function Sidebar() {
+export default function SideBar() {
     // const router = useRouter();
     const pathname = usePathname();
     const activeSegment = useSelectedLayoutSegment();
@@ -23,17 +23,17 @@ export default function Sidebar() {
 
 
     return (
-        <div className="  lg:h-[80vh]  flex flex-col w-full  ">
+        <div className="  lg:h-[80vh] h-auto flex flex-col mx-auto w-full   ">
           <div className="lg:my-5">
             <p className='text-[#bebebe] p-2 md:text-sm text-xs tracking-wide leading-loose'>
-              <span className='lg:text-lg font-bold text-white'>👋🏽 Ebuka Here,</span>  <br />
-            I&apos;m a software engineer  specializing in web and mobile application development, with a keen interest in leveraging technologies such as <span className='text-white'>React</span>, <span className='text-white'>NextJS</span>, <span className='text-white'>Sanity</span>, <span className='text-white'>MongoDB</span>, <span className='text-white'>React Native</span>  and more to create accesible applications to a wide range of users. <br />
+              <span className='lg:text-lg font-bold text-white'>👋🏽   Ebuka Here,</span>  <br />
+            I&apos;m a software engineer  specializing in web and mobile application development, with a keen interest in leveraging technologies such as <span className='text-white'>React</span>, <span className='text-white'>NextJS</span>, <span className='text-white'>Sanity</span>, <span className='text-white'>MongoDB</span>, <span className='text-white'>React Native</span>,  <span className='text-white'>Supabase</span>,  <span className='text-white'>Prisma</span>,  <span className='text-white'>Postgress </span>  and more to create accesible applications to a wide range of users. <br />
             I believe in collaborating closely with clients to understand their vision and requirements, ensuring that the final product aligns perfectly with their goals. My attention to detail, problem-solving abilities, and dedication to delivering high-quality solutions have enabled me to build a strong track record of client satisfaction. <br />
             Browse through my portfolio to explore some of the exciting projects I have worked on. I&apos;m always excited to take on new challenges and push the boundaries of what&apos;s possible in the world of web, mobile, and ML applications.
 
             </p>
           </div>
-          <div className=" hidden lg:flex flex-col justify-center h-1/3 mb-5">
+          <div className=" hidden lg:flex flex-col justify-center w-1/2 h-1/3 mb-5">
 
             {links.map((link) => {
                 // const isActive = pathname.startsWith(link.path);
