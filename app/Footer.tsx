@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import profile from "../public/full.jpg";
-import displayp from "../public/3.png";
+import displayp from "../public/joy.jpg";
 import { AiFillGithub, AiOutlineLink, AiOutlineTwitter, AiOutlineMail }  from "react-icons/ai";
 
 
