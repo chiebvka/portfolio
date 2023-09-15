@@ -1,6 +1,6 @@
 
-import './globals.css'
 import { Inter } from 'next/font/google';
+import './globals.css'
 // import  {FaBarsStaggered}  from "react-icons/fa"
 import Image from 'next/image';
 import Header from './Header';
@@ -35,11 +35,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+
       <body className={`${inter.className} w-10/12 lg:w-9/12 mx-auto `}>
         <Header />
-        <div className=" mb-5 ">
           {children}
-        </div>
         <Footer />
       </body>
     </html>

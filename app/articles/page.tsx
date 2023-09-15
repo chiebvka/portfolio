@@ -25,17 +25,17 @@ const articles = await getArticles();
 export default function page ()  {
   return (
     <main className="mx-auto min-h-screen justify-between flex mt-8 ">
-      <div className="flex relative mt-2 w-1/2 mx-auto">
+      <div className="hidden md:flex lg:w-1/2 mx-auto">
         <SideBar />
       </div>
       <div className="  flex-col lg:w-1/2 mx-auto items-start w-full p-5  h-full">   
       <h2 className='text-[#bebebe] text-base underline md:hidden  '>Articles</h2>   
-        <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-5 w-full my-3">
+        <div className="grid lg:grid-cols-2 grid-cols-1 group lg:gap-x-5 w-full my-3">
           {articles.map((article) => (
             
             
             
-            <Link key={article._id} href={`/articles/${article.slug}`} className="flex  flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
+            <Link key={article._id} href={`/articles/${article.slug}`} className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3 border border-slate-200 transition-all duration-150 delay-250  ease-in px-3 py-6 rounded my-4 ">
               <h3 className='mb-1'>{article.name}</h3>
               <div className="flex text-[#bebebe] text-[10px]  ">
               {new Date(article._createdAt).toISOString().split("T")[0]}

@@ -42,8 +42,9 @@ export default function Header ()  {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="   w-full flex  max-w-6xl items-center  justify-between font-mono text-sm ">
-      <div className=" flex  justify-center  mt-3  p-2  ">
-        <Link href="/"  className={`${cavet.className} text-4xl text-[#bebebe] font-extrabold`}>Ebvka.</Link>  
+      <div className=" flex  justify-center  mt-3  p-2  ">  
+        <Link href="/"  className={`${cavet.className} text-4xl font-extrabold text-[#bebebe] `}>Ebvka.</Link>  
+        {/* <Link href="/"  className={`${cavet.className} text-4xl text-[#bebebe] font-extrabold`}>Ebvka.</Link>   */}
       </div>
       <div className=" flex items-end justify-center  hover:shine transition-all duration-150 delay-500 ease-in  lg:static lg:h-auto lg:w-auto lg:bg-none">
         {/* <FaBarsStaggered /> */}

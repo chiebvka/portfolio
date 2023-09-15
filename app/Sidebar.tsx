@@ -59,13 +59,6 @@ export default function SideBar() {
                 <span className="absolute inset-0 w-full h-full bg-white border-2 border-slate-400 group-hover:bg-[#1b1b1d]"></span>
                 <span className="relative text-slate-900 group-hover:text-[#bebebe]">Take a tour</span>
               </Link>
-              {/* <Link href="https://github.com/whoisebvka" target='_blank' className=' flex items-center  has-before bg-[#1b1b1d] hover:shine hover:mt-9 hover:ml-3 border border-slate-400 transition-all duration-150 delay-250 rounded-lg  ease-in mt-7 mr-3 p-2'>
-                <span  className='flex items-center'>
-                  <AiFillGithub className='fs-3 lg:mx-1 mr-1' />
-                  <span className='font-light text-xs lg:text-sm '>Github</span>
-                  <AiOutlineLink className='fs-3 lg:mx-1 hidden lg:flex' />
-                </span>
-              </Link> */}
           </div>
         </div>
     )

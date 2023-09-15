@@ -21,6 +21,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
+    "framer-motion": "^10.16.4",
     "heroicons": "^2.0.18",
     "next": "13.4.4",
     "next-sanity": "^4.3.3",

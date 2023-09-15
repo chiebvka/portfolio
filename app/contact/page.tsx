@@ -8,7 +8,7 @@ export default function page ()  {
     return (
 <div className="relative  mt-[20px] mb-[180px] lg:mb-[150px] lg:mt-[50px] flex justify-center items-center  h-[80vh]  from-sky-50 to-gray-200">  
     <div className="relative container  flex justify-center items-center  h-[90%] my-auto px-3 text-gray-500 md:px-12 xl:px-40">
-        <div className="m-auto md:w-8/12 lg:w-7/12 xl:w-7/12">
+        <div className="m-auto md:w-10/12 lg:w-10/12 xl:w-10/12">
             <div className="rounded-xl bg-[#1b1b1d] border-2 border-slate-400  shadow-xl">
                 <div className="p-4 sm:p-16">
                     <div className="space-y-4 flex flex-col">
