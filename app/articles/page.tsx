@@ -9,7 +9,7 @@ import { BsClockHistory } from "react-icons/bs";
 import { getArticles } from '@/sanity/utils';
 import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '../RichTextComponents';
-import SideBar from '../SideBar';
+import SideBar from '../components/SideBar';
 
 
 

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { MdOutlineWebhook } from "react-icons/md"
 import { AiOutlineGithub } from "react-icons/ai"
 import { getProjects, getfeaturedPorjects } from '@/sanity/utils';
-import SideBar from '../SideBar';
+import SideBar from '../components/SideBar';
 
 
 

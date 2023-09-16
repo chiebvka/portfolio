@@ -1,14 +1,9 @@
-// 'use client'
-
-import Image from 'next/image';
 import Link from 'next/link';
-import { MdOutlineWebhook } from "react-icons/md"
-import { AiOutlineGithub } from "react-icons/ai"
-
-import { BsClockHistory } from "react-icons/bs";
+import { MdOutlineWebhook } from "react-icons/md";
+import { AiOutlineGithub } from "react-icons/ai";
 import {  getProjects, getfeaturedPorjects } from '@/sanity/utils';
-import SideBar from './SideBar';
-// import { motion, AnimatePresence } from 'framer-motion';
+import SideBar from './components/SideBar';
+
 
 
 
@@ -37,21 +32,6 @@ export default function Home() {
 
   return (
     <main className="mx-auto min-h-screen relative justify-between flex  mt-8">
-              {/* <motion.div className=" mb-5 ">
-         <motion.div 
-                className='slide-in' 
-                initial={{scaleY: 0}}
-                animate={{scaleY: 0}}
-                exit={{scaleY: 1}}
-                transition={{duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                ></motion.div>
-         <motion.div 
-                className='slide-out' 
-                initial={{scaleY: 1}}
-                animate={{scaleY: 0}}
-                exit={{scaleY: 0}}
-                transition={{duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                ></motion.div> */}
 
     <div className="flex lg:w-1/2 mx-auto">
       <SideBar />
@@ -135,7 +115,6 @@ export default function Home() {
 
       </div>
     </div>
-        {/* </motion.div> */}
 
   </main>
 

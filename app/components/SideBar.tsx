@@ -44,12 +44,7 @@ export default function SideBar() {
                         <span className={ pathname === link.path ? ` border w-[80px] transition-all duration-150 delay-250 ease-out  items-center p-0  h-0 my-2 mx-2 ` : `w-[40px] transition-all duration-150 delay-250 ease-in  group-hover:w-[80px] bg-white border   h-0 flex items-center p-0 m-3`}></span>
                         <span className={ pathname === link.path ? ` -my-1` : `my-0`}>{link.label}</span>
                     </Link>
-                    // <Link href={link.path}  key={link.label}  className={ (activeSegment === link.targetSegment) ? `  flex w-[200px] group opacity-100 p-2` : `opacity-50  group hover:opacity-100 transition-all duration-300 delay-100 ease-in-out flex p-2`} >
-                    //     {/* <Link href={link.path}  key={link.label} passHref className={` ${router.pathname  === "/" ? "flex w-[200px] opacity-100" : "opacity-50 hover:opacity-100 flex"} `} > */}
-                    //     <span className={ (activeSegment === link.targetSegment) ? ` text-sm ` : ` my-1 text-xs`}>{link.number}</span>
-                    //     <span className={ (activeSegment === link.targetSegment) ? ` border w-[80px] transition-all duration-150 delay-250 ease-out  items-center p-0  h-0 my-2 mx-2 ` : `w-[40px] transition-all duration-150 delay-250 ease-in  group-hover:w-[80px] bg-white border   h-0 flex items-center p-0 m-3`}></span>
-                    //     <span className={ (activeSegment === link.targetSegment) ? ` -my-1` : `my-0`}>{link.label}</span>
-                    // </Link>
+
                 )
             })}
           </div>
