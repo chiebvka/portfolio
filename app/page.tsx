@@ -37,7 +37,7 @@ export default function Home() {
       <SideBar />
     </div>
     <div className=" lg:flex hidden flex-col 0 items-start w-1/2 p-5  h-full">
-      <h2 className='text-[#bebebe] text-base underline  '>FEATURED</h2>
+      <h2 className='text-[#bebebe] text-base underline  '>Featured</h2>
       <div className="flex flex-col w-full   my-3  ">
         {featuredProjects.map((features) => (
 
@@ -79,7 +79,7 @@ export default function Home() {
 
 
 
-      <h2 className='text-[#bebebe] text-base underline  '>OTHER</h2>
+      <h2 className='text-[#bebebe] text-base underline  '>Others</h2>
       <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-5 group w-full my-3">
 
         {projects.map((project) => (

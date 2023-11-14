@@ -1,8 +1,8 @@
 'use client'
 
-import {  Fragment, useState } from 'react'
+import { useState } from 'react'
 import { Caveat } from 'next/font/google'
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
+import { Dialog } from '@headlessui/react'
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -12,7 +12,7 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 
 function classNames(...classes: any) {

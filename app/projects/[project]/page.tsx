@@ -37,23 +37,23 @@ export default async function Project({ params }: Props) {
                     <div className="flex flex-col lg:flex-row   w-full lg:w-11/12  mx-auto">
                         <div className="lg:w-6/12  w-full  lg:p-2 ">
                             <h1 className=" text-base lg:text-2xl  pl-2 lg:pl-0 ">{project.name}</h1>
-                            <span  className='flex mt-1 pl-1 text-[#bebebe] lg:pl-0 items-center'>
+                            <div  className='flex mt-1 pl-1 text-[#bebebe] lg:pl-0 items-center'>
                                 <BiCalendar className='fs-1 lg:text-[15px] text-[9px]  ml-1 mr-[2px] lg:ml-0  ' />
                                 <span className='font-extralight  text-[9px]  md:text-sm'>{duedate}</span>
-                            </span>
+                            </div>
                         </div>
                         <div className="lg:w-6/12  w-full   lg:p-2  flex  lg:items-center lg:justify-self-start items-start justify-start">
                             <Link href={project.livelink} target='_blank' className=' flex transition duration-300 hover:text-slate-400 items-center  p-1 lg:p-2'>
-                                <span  className='flex underline items-center'>
+                                <div  className='flex underline items-center'>
                                     <AiOutlineLink className='lg:fs-3 text-[9px] lg:text-[15px] fs-5 mx-1 ' />
                                     <span className='font-light text-[9px] lg:text-sm '>View the application</span>
-                                </span>
+                                </div>
                             </Link>
                             <Link href={project.github} target='_blank' className=' flex transition duration-300 hover:text-slate-400 items-center  p-1 lg:p-2'>
-                                <span  className='flex underline items-center'>
+                                <div  className='flex underline items-center'>
                                     <AiOutlineLink className='lg:fs-3 text-[9px] lg:text-[15px] fs-5  mx-1 ' />
                                     <span className='font-light  text-[9px] lg:text-sm '>Github Repo</span>
-                                </span>
+                                </div>
                             </Link>
                         </div>
                     </div>
