@@ -8,10 +8,10 @@ import { getProjects, getfeaturedPorjects } from '@/sanity/utils';
 import SideBar from '../components/SideBar';
 
 
+export const revalidate = 10
 
 const projects = await getProjects();
 const featuredProjects = await getfeaturedPorjects();
-
 
 
 export default function page ()  {

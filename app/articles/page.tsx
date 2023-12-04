@@ -12,6 +12,8 @@ import { RichTextComponents } from '../RichTextComponents';
 import SideBar from '../components/SideBar';
 
 
+export const revalidate = 10
+
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')

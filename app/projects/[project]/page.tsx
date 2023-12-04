@@ -18,6 +18,8 @@ type Props = {
     
 }
 
+export const revalidate = 10
+
 
 export default async function Project({ params }: Props) {
 
