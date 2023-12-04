@@ -11,7 +11,7 @@ export async function getPets() {
             _id,
             _createdAt,
             name,
-        }`
+        }` , { cache: 'no-store' }
     )
 }
 
@@ -42,7 +42,7 @@ export async function getProjects(): Promise<Project[]> {
             url,
             content
      
-        }`
+        }`, { cache: 'no-store' }
     )
 }
 
@@ -88,7 +88,7 @@ export async function getArticle(slug: string): Promise<Article>{
             "image": image.asset->url,
             url,
             content
-        }`,
+        }`, 
         { slug }
     )
 }
@@ -117,7 +117,7 @@ export async function getfeaturedPorjects(): Promise<Project[]>{
           name,
           _id
         }
-    }` 
+    }` ,{ cache: 'no-store' }
     )
 }
 
@@ -139,7 +139,7 @@ export async function getArticles(): Promise<Article[]> {
                     asset->
                 }
             }
-        }`
+        }` , { cache: 'no-store' }
     )
 }
 

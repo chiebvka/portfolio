@@ -42,12 +42,12 @@ export default function page ()  {
               </div>
               <span className='text-[#777778] text-sm tracking-wide my-2 flex '>
               {article.category.map((category) => {
-                                  return(
-                                      <div className='' key={category._id} > 
-                                      <span className='text-[#bebebe] flex items-center mr-2 underline text-xs tracking-tight capitalize  '>{category.name}</span> 
-                                      </div>
-                                  )
-                                  })}
+                  return(
+                      <div className='' key={category._id} > 
+                      <span className='text-[#bebebe] flex items-center mr-2 underline text-xs tracking-tight capitalize  '>{category.name}</span> 
+                      </div>
+                  )
+                  })}
                 </span>
               <div className="flex">
                 <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
