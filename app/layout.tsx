@@ -3,6 +3,31 @@ import { Inter } from 'next/font/google';
 import './globals.css'
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { Metadata } from 'next';
+import { getUrl } from '@/sanity/utils';
+
+
+export const metadata:Metadata = {
+  metadataBase: new URL(getUrl()),
+  title: {
+    default:  'Chiebvka - Ebuka Ebuzor ',
+    template: "%s | Chiebvka - Ebuka Ebuzor"
+  },
+  description: 'chiebvka.dev',
+  verification: {
+    google: "google-site-verification=NJ-CJPTz_Mck8wMOPekQZTjMFQWAYp1-Y0MwkNM_ISM"
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Next.js',
+    description: 'The React Framework for the Web',
+    siteId: '1467726470533754880',
+    creator: '@nextjs',
+    creatorId: '1467726470533754880',
+    images: ['https://nextjs.org/og.png'],
+  },
+
+}
 
 
 
@@ -14,13 +39,6 @@ function classNames(...classes: any) {
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  // icons:{
-  //   icon: ''
-  // },
-  title: 'Chiebvka - Ebuka Ebuzor ',
-  description: 'chiebvka.dev',
-}
 
 export default function RootLayout({
   children,

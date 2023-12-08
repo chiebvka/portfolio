@@ -10,9 +10,16 @@ import { getArticles } from '@/sanity/utils';
 import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '../RichTextComponents';
 import SideBar from '../components/SideBar';
+import type { Metadata } from 'next'
+
 
 
 export const revalidate = 10
+
+export const metadata: Metadata = {
+  title: 'Chiebvka - Articles  ',
+  description: 'Articles and Blog posts',
+}
 
 
 function classNames(...classes: any) {

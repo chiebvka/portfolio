@@ -5,6 +5,8 @@ import Link from "next/link";
 import { AiOutlineLink } from "react-icons/ai";
 import { RichTextComponents } from "@/app/RichTextComponents";
 import { BiCalendar } from "react-icons/bi";
+import type { Metadata } from 'next'
+
 
 
 type Props = {

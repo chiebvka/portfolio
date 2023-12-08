@@ -11,12 +11,63 @@ import { BiCalendar } from "react-icons/bi";
 import { client } from "@/sanity/lib/client";
 import { RichTextComponents } from "@/app/RichTextComponents";
 
-
+import type { Metadata, ResolvingMetadata } from 'next';
+ 
 type Props = {
-    params: { project: string }
-
-    
+    params: {
+        slug: string; 
+        project: string 
+    }
 }
+
+export async function generateMetadata(
+  { params,  }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+    try {
+        const slug = params.project;
+        const project = await getProject(slug) 
+        if(!project) 
+            return {
+                title: "Not Found",
+                description: "The page you are looking for does not exist"
+            }
+            return {
+                title: project.name,
+                description: project.description,
+                alternates: {
+                    canonical: `/projects/${project.slug}`,
+                    languages : {
+                        'en-US': `/en-US/projects/${project.slug}`,
+                        'fr-FR': `/fr-FR/projects/${project.slug}`,
+                    }
+                },
+                twitter: {
+                    card: 'summary_large_image',
+                    title: project.name!!,
+                    description: project.description!!,
+                    siteId: '1467726470533754880',
+                    creator: '@chiebvka',
+                    creatorId: '1467726470533754880',
+                    images: ['https://nextjs.org/og.png'],
+                },
+                robots: {
+                    index: false,     
+                    follow: true,
+                    nocache: true           
+                }   
+                             
+            }
+    } catch (error) {
+        return {
+            title: "Not Found",
+            description: "The page you are looking for does not exist"
+        }
+    }
+}
+
+
+
 
 export const revalidate = 10
 
@@ -32,7 +83,7 @@ export default async function Project({ params }: Props) {
     return (
         <main className=" border-l-4  border-l-slate-400 mt-[20px] lg:mt-[70px]">
             <div className=" w-full">
-                <div className="flex w-full border-2 border-slate-400 rounded -z-10 mx-auto opacity-75 relative h-[20vh] md:h-[30vh]  ">
+                <div className="flex w-full border-2 border-slate-400 rounded -z-10 mx-auto opacity-75 relative h-[35vh] md:h-[30vh]  ">
                     <Image src={project.image} alt={project.name} className=" -z-10  object-cover"  fill={true} />
                 </div>
                 <div className="border-2 border-slate-400 bg-[#1b1b1d] -mt-12  z-40  rounded-lg  w-11/12 mx-auto py-2 ">

@@ -3,6 +3,12 @@ import Link from "next/link";
 // import intro from "../../public/memoji.mov";
 // /Users/ebuka/Projects/beta/public/memoji.mov
 import { AiFillGithub, AiOutlineLink, AiOutlineTwitter, AiOutlineMail }  from "react-icons/ai";
+import type { Metadata } from 'next'
+
+export const metadata:Metadata = {
+    title: 'Chiebvka - Contact me  ',
+    description: 'Contact me on any platform',
+  }
 
 export default function page ()  {
     return (

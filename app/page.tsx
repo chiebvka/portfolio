@@ -3,10 +3,13 @@ import { MdOutlineWebhook } from "react-icons/md";
 import { AiOutlineGithub } from "react-icons/ai";
 import {  getProjects, getfeaturedPorjects } from '@/sanity/utils';
 import SideBar from './components/SideBar';
+import type { Metadata } from 'next'
+
 
 
 
 export const revalidate = 10
+
 
 
 function classNames(...classes: any) {
