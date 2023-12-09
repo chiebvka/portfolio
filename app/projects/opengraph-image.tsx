@@ -34,8 +34,8 @@ export default async function Image({params}: Props) {
 
     <div tw='relative flex w-full h-full items-center justify-center'>
         <div tw="absolute flex inset-0">
-            <img tw='flex flex-1' src={project?.image} alt={project?.name} />
-            <div tw="absolute flex inset-0 bg-black bg-opacity-50 -10" />
+          <img tw='flex flex-1' src={project?.image} alt={project?.name} />
+          <div tw="absolute flex inset-0 bg-black bg-opacity-50 -10" />
         </div>
         <div tw="flex flex-col text-neutral-50">{project?.name}</div>
     </div>
