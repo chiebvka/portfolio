@@ -25,7 +25,13 @@ export default async function Image({params}: Props) {
     const slug = params.project;
     const project = await getProject(slug)  
 
-  return new ImageResponse((
+    if (!project) {
+      // Handle the case where the project is not found
+      return <div>Project not found</div>;
+    }
+
+  return new ImageResponse( (
+
     <div tw='relative flex w-full h-full items-center justify-center'>
         <div tw="absolute flex inset-0">
             <img tw='flex flex-1' src={project?.image} alt={project?.name} />
