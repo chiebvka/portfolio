@@ -21,11 +21,11 @@ type Props = {
     }
 }
 
-export default async function og({params}: Props) {
+export default async function Image({params}: Props) {
     const slug = params.project;
     const project = await getProject(slug)  
 
-  return new ImageResponse(
+  return new ImageResponse((
     <div tw='relative flex w-full h-full items-center justify-center'>
         <div tw="absolute flex inset-0">
             <img tw='flex flex-1' src={project?.image} alt={project?.name} />
@@ -33,5 +33,9 @@ export default async function og({params}: Props) {
         </div>
         <div tw="flex flex-col text-neutral-50">{project?.name}</div>
     </div>
+  ),
+  {
+    ...size,
+  }
   )
 }
