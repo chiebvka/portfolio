@@ -38,6 +38,10 @@ export default async function Image({params}: Props) {
           <div tw="absolute flex inset-0 bg-black bg-opacity-50 -10" />
         </div>
         <div tw="flex flex-col text-neutral-50">{project?.name}</div>
+        {/** Tags */}
+        <div tw="flex mt-6 flex-wrap space-x-10 items-center text-4xl ">
+          <div tw="text-emerald-600">{project.description}</div>
+        </div>
     </div>
   ),
   {
