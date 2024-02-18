@@ -28,10 +28,11 @@ function classNames(...classes: any) {
  
 
 
-const articles = await getArticles();
 
 
-export default function page ()  {
+export default async function page ()  {
+  const articles = await getArticles();
+
   return (
     <main className="mx-auto min-h-screen justify-between flex mt-8 ">
       <div className="hidden md:flex lg:w-1/2 mx-auto">

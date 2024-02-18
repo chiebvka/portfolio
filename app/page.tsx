@@ -16,12 +16,12 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
  
-const projects = await getProjects();
-const featuredProjects = await getfeaturedPorjects();
 
 
-export default function Home() {
-
+export default async function Home() {
+  
+  const projects = await getProjects();
+  const featuredProjects = await getfeaturedPorjects();
 
   const techs = [
     { number:"01" ,label: 'Home' },
@@ -64,7 +64,7 @@ export default function Home() {
               className='object-cover rounded-lg border border-gray-600'
             />
           )} */}
-          <p className='text-[#777778] text-xs mt-2 tracking-wide leading-loose line-clamp-1 '>{features.description}</p>
+          <p className='text-[#777778] text-xs mt-2 tracking-wide leading-loose line-clamp-1 '>{features?.description}</p>
           <div className="flex">
             <span className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
               <MdOutlineWebhook  className='fs-3 mr-1' />
@@ -75,7 +75,7 @@ export default function Home() {
               <p className='font-light text-xs' >Repo</p>
             </span>
           </div>
-          <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline'>{features.design.designer}</span>  </div>
+          <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline'>{features?.design?.designer}</span>  </div>
         </Link>
         ))}
       </div>
@@ -87,10 +87,10 @@ export default function Home() {
 
         {projects.map((project) => (
 
-          <Link key={project._id} href={`/projects/${project.slug}`} className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-200  group-hover:gap-x-2 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
+          <Link key={project?._id} href={`/projects/${project?.slug}`} className="flex flex-col has-before bg-[#1b1b1d] hover:shine hover:mt-5 hover:ml-3  border border-slate-200  group-hover:gap-x-2 transition-all duration-150 delay-250  ease-in px-3 py-4 rounded my-4 ">
             <h3 className='capitalize'>{project.name}</h3>
             <div className="flex mt-2 ">
-              {project.category.map((category) => {
+              {project?.category.map((category) => {
                 return(
                   <div className='mr-2 ' key={category._id} > 
                     <span className='text-[#bebebe] text-xs tracking-tight capitalize underline '>{category.name}</span> 
@@ -98,7 +98,7 @@ export default function Home() {
                 )
               })}
             </div>
-            <p className='text-[#777778] text-xs mt-2 tracking-wide line-clamp-3  '>{project.description}</p>
+            <p className='text-[#777778] text-xs mt-2 tracking-wide line-clamp-3  '>{project?.description}</p>
             {/* <p className='text-[#777778] text-xs mt-2 tracking-wide line-clamp-3  '>{project.slug}</p> */}
             <div className="flex">
               <span  className='flex mt-3 mr-3 leading-6 transition duration-200 delay-75 ease-in opacity-75 hover:opacity-100  p-0 ' >
@@ -110,7 +110,7 @@ export default function Home() {
                 <p className='font-light text-xs' >Repo</p>
               </span>
             </div>
-            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline' >{project.design.designer}</span>  </div>
+            <div className='text-[#777778] text-xs mt-2 tracking-wide leading-loose  '>Designed by: <span className='text-white text-xs underline' >{project?.design?.designer}</span>  </div>
           </Link>
         ))}
 

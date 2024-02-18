@@ -9,7 +9,7 @@ import SideBar from '../components/SideBar';
 import type { Metadata } from 'next'
 
 
-export const revalidate = 10
+
 
 
 export const metadata:Metadata = {
@@ -17,13 +17,15 @@ export const metadata:Metadata = {
   description: 'Projects and works',
 }
 
-const projects = await getProjects();
-const featuredProjects = await getfeaturedPorjects();
 
 
-export default function page ()  {
+export const revalidate = 60
 
-
+export default async function  page ()  {
+  const projects = await getProjects();
+  const featuredProjects = await getfeaturedPorjects();
+  
+  
 
 
 
