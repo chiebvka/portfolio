@@ -5,16 +5,64 @@ import Link from "next/link";
 import { AiOutlineLink } from "react-icons/ai";
 import { RichTextComponents } from "@/app/RichTextComponents";
 import { BiCalendar } from "react-icons/bi";
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 
 
 type Props = {
-    params: { article: string }
+    params: { 
+        article: string 
+        slug: string
+    }
 
     
 }
 
+export async function generateMetadata(
+    { params,  }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+      try {
+          const slug = params.article;
+          const article = await getArticle(slug)
+          if(!article) 
+              return {
+                  title: "Not Found",
+                  description: "The page you are looking for does not exist"
+              }
+              return {
+                  title: article.name,
+                  alternates: {
+                      canonical: `/articles/${article.slug}`,
+                      languages : {
+                          'en-US': `/en-US/articles/${article.slug}`,
+                          'fr-FR': `/fr-FR/articles/${article.slug}`,
+                      }
+                  },
+                  twitter: {
+                      card: 'summary_large_image',
+                      title: article.name!!,
+                      siteId: '1467726470533754880',
+                      creator: '@chiebvka',
+                      creatorId: '1467726470533754880',
+                      images: ['https://nextjs.org/og.png'],
+                  },
+                  robots: {
+                      index: false,     
+                      follow: true,
+                      nocache: true           
+                  }   
+                               
+              }
+      } catch (error) {
+          return {
+              title: "Not Found",
+              description: "The page you are looking for does not exist"
+          }
+      }
+  }
+  
+  
 
 
 

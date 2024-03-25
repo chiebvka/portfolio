@@ -1,5 +1,5 @@
-import { createClient, groq } from "next-sanity";
-import { client } from "./lib/client";
+    import { createClient, groq } from "next-sanity";
+    import { client } from "./lib/client";
 import { Project } from "@/types/Project";
 import { Article } from "@/types/Article";
 
